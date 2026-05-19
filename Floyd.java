@@ -25,10 +25,10 @@ public class Floyd {
             }
         }
 
-        ejecutarFloyd();
+        ejecutar();
     }
 
-    private void ejecutarFloyd() {
+    private void ejecutar() {
         int n = distancias.length;
 
         for (int k = 0; k < n; k++) {
@@ -83,7 +83,7 @@ public class Floyd {
         return ruta.toString();
     }
 
-    public String calcularCentroGrafo() {
+    public String centroGrafo() {
         int n = distancias.length;
         int menorExcentricidad = Grafo.INF;
         String centro = "";

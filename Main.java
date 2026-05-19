@@ -10,7 +10,7 @@ public class Main {
         try {
             grafo.leerArchivo("guategrafo.txt");
         } catch (Exception e) {
-            System.out.println("Error al leer el archivo.");
+            System.out.println("Error al leer el archivo");
             return;
         }
 
@@ -43,11 +43,11 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("Centro del grafo: " + floyd.calcularCentroGrafo());
+                    System.out.println("Centro del grafo: " + floyd.centroGrafo());
                     break;
 
                 case 3:
-                    System.out.println("1. Interrumpir trafico");
+                    System.out.println("1. Eliminar ruta");
                     System.out.println("2. Agregar conexion");
                     System.out.print("Seleccione una opcion: ");
                     int tipo = scanner.nextInt();
@@ -61,18 +61,17 @@ public class Main {
 
                     if (tipo == 1) {
                         grafo.eliminarArco(ciudad1, ciudad2);
-                        System.out.println("Conexion eliminada.");
+                        System.out.println("Conexion eliminada");
                     } else if (tipo == 2) {
                         System.out.print("Distancia en KM: ");
                         int distancia = scanner.nextInt();
                         scanner.nextLine();
 
                         grafo.agregarArco(ciudad1, ciudad2, distancia);
-                        System.out.println("Conexion agregada.");
+                        System.out.println("Conexion agregada");
                     }
 
                     floyd = new Floyd(grafo.getMatriz(), grafo.getCiudades());
-                    System.out.println("Rutas recalculadas.");
                     break;
 
                 case 4:
@@ -80,11 +79,11 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Programa finalizado.");
+                    System.out.println("Programa finalizado");
                     break;
 
                 default:
-                    System.out.println("Opcion invalida.");
+                    System.out.println("Opcion invalida");
                     break;
             }
 
