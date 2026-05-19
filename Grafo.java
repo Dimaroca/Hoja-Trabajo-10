@@ -69,12 +69,20 @@ public class Grafo {
     }
 
     public void agregarArco(String origen, String destino, int distancia) {
+        boolean cambio = false;
+
         if (!indices.containsKey(origen)) {
             agregarCiudad(origen);
+            cambio = true;
         }
 
         if (!indices.containsKey(destino)) {
             agregarCiudad(destino);
+            cambio = true;
+        }
+
+        if (cambio) {
+            redimensionarMatriz();
         }
 
         int i = indices.get(origen);
@@ -90,6 +98,31 @@ public class Grafo {
 
             matriz[i][j] = INF;
         }
+    }
+
+    private void redimensionarMatriz() {
+        int n = ciudades.size();
+        int[][] nueva = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    nueva[i][j] = 0;
+                } else {
+                    nueva[i][j] = INF;
+                }
+            }
+        }
+
+        if (matriz != null) {
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz.length; j++) {
+                    nueva[i][j] = matriz[i][j];
+                }
+            }
+        }
+
+        matriz = nueva;
     }
 
     public int[][] getMatriz() {
